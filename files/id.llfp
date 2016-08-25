@@ -1,0 +1,19 @@
+SIGNATURE
+
+int : *;
+
+END_SIGNATURE
+
+CONTEXT
+
+y : int;
+
+END_CONTEXT
+
+OBJECT
+
+(Lam x: int. x) y
+
+FAMILY
+
+int

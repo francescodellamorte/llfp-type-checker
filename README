@@ -1,0 +1,154 @@
+
+
+              ***************************************************************
+              ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
+              **                                                           **
+              **                                                           **
+              **                    LLFP TYPE-CHECKER                      **
+              **                                                           **
+              **                                                           **
+              ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
+              ***************************************************************
+
+
+
+                         *********************************************
+                         *                                           *
+                         *   HOW TO COMPILE AND RUN THE SOFTWARE     *
+                         *                                           *
+                         *********************************************
+
+
+enter 'make' in the command line to compile
+enter './type_checking', './kind_checking' or './is_kind' followed by a file name to check this file
+files/ contains some examples
+
+
+
+                         *********************************************
+                         *                                           *
+                         *       HOW TO WRITE A LLFP FILE            *
+                         *                                           *
+                         *********************************************
+
+
+all files must follow this syntax:
+
+SIGNATURE
+
+\signature
+
+END_SIGNATURE
+
+CONTEXT
+
+\context
+
+END_CONTEXT
+
+OBJECT
+
+\object
+
+FAMILY
+
+\family
+
+********
+
+the signature is a sequence of lines of this form:
+\variable : \kind
+or:
+\constant : \family
+a ';' must end all lines, even the last one
+the variables and constants are strings, yet all constants must begin with 'c_'
+
+example:
+
+int : *;
+c_0 : int;
+c_1 : int;
+bool : *;
+c_and : Pi b1: bool. Pi b2: bool. bool;
+
+********
+
+the context is a sequence of lines of this form :
+\variable : \family
+a ';' must end all lines, even the last one
+here again, variables are strings
+
+example:
+
+b : bool;
+x : int;
+f : Lam x1: int. Lam a: bool. int;
+
+********
+
+the principal kind type is written with a single '*'
+one can construct other kinds with the syntax
+Pi \variable : \family. \kind
+
+examples:
+
+*
+Pi x: int. *
+Pi x: int. Pi b1: bool. Pi f: (Pi x: int. int). *
+
+********
+
+objects are recursively constructed this way:
+
+variables and constants are objects if they are well defined in the context and the signature
+Lam \variable : \object. \object is an object
+\object \object is an object
+Lock \prop (\object, \family) [\object] is an object, where, again, \prop is a string refering to a predicate
+Unlock \prop (\object, \family) [\object] is an object
+<\object, \object> is an object, it is the ordered pair of two objects
+
+examples:
+
+(Lam x: int. x) y
+Unlock true (x, int) [Lam b: bool. b]
+
+********
+
+families are recursively constructed this way:
+variables are families if they are well defined in the signature
+Pi \variable : \family. \family is a family
+\family \object is a family
+Lock \prop (\object, \family) [\family] is a family, where \prop is a string refering to a predicate
+\family X \family is a family, it is the cartesian product of two families
+
+examples:
+
+Pi x: int. Pi y: int. bool
+Lock closed (Lam x: int. x, Pi x: int. int) [bool]
+
+
+
+                         *********************************************
+                         *                                           *
+                         *         HOW TO PROVE A PROPRIETY          *
+                         *                                           *
+                         *********************************************
+
+
+when the software faces an top.unlock rule, it has to prove a propriety
+it prints in the terminal the data (a predicate, a signature, a context and a family) and asks the user what kind of software he wants to use
+he can answer 'ocaml' or 'coqide'
+
+********
+
+if the predicate is syntax-directed and already written in the file library.ml, the user can ask for an ocaml prof, typing 'ocaml'
+the software simply checks if the predicate applied on the data is true
+
+********
+
+if the predicate is not syntax-directed, the user can ask for a proof using coqide, typing 'coqide'
+the software then asks the user in which coq file the predicate is defined
+the coq file has to be in the proof/ directory
+the software opens coqide with the proposition to prove for the user
+when the user has completed his proof, he has to compile his file, to close coqide, and to write anything in the command line
+the software then checks if the proof is correct and keeps computing

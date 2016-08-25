@@ -1,0 +1,20 @@
+SIGNATURE
+
+int : *;
+
+END_SIGNATURE
+
+CONTEXT
+
+x : int;
+y : Lock closed (Lam z: int. z, Pi z: int. int) [int];
+
+END_CONTEXT
+
+OBJECT
+
+Unlock closed (Lam z: int. z, Pi z: int. int) [y]
+
+FAMILY
+
+int

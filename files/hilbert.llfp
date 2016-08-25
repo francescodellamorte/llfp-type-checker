@@ -1,0 +1,29 @@
+SIGNATURE
+
+o : *;
+true : Pi p1: o. *;
+c_arrow : Pi p2: o. Pi p3: o. o;
+c_not : Pi p4: o. o;
+c_necess : Pi p5: o. o;
+c_event : Pi p6: o. o;
+c_a1 : Pi p7: o. Pi p8: o. true ((c_arrow p7) ((c_arrow p8) p7));
+c_a2 : Pi p9: o. Pi p10: o. Pi p11: o. true ((c_arrow (c_arrow p9 ((c_arrow p10) p11))) ((c_arrow ((c_arrow p9) p10)) ((c_arrow p9) p11)));
+c_a3 : Pi p12: o. Pi p13: o. true ((c_arrow ((c_arrow (c_not p12)) (c_not p13))) ((c_arrow ((c_arrow (c_not p12)) p13)) p12));
+c_k : Pi p14: o. Pi p15: o. true ((c_arrow (c_necess (c_arrow p14 p15))) ((c_arrow (c_necess p14)) (c_necess p15)))
+c_t : Pi p15: o. true ((c_arrow (c_necess p15)) p15);
+c_4 : Pi p16: o. true (c_arrow (c_necess p16) (c_necess (c_necess p16)));
+c_5 : Pi p17: o. true ((c_arrow (c_event p17)) (c_necess (c_event p17)));
+c_mp : Pi p18: o. Pi p19: o. Pi x1: true p18. Pi x2: true ((c_arrow p18) p19). true p19;
+c_nec : Pi p20: o. Pi x3: true p20. Lock closed (x3, true p20) [true (c_necess p20)];
+
+END_SIGNATURE
+
+CONTEXT
+
+
+
+END_CONTEXT
+
+OBJECT
+
+FAMILY

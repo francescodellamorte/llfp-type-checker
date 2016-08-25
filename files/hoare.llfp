@@ -1,0 +1,55 @@
+SIGNATURE
+
+int : *;
+bool : *;
+var : *;
+c_bang : Pi v1: var. int;
+c_0 : int;
+c_1 : int;
+c_m1 : int;
+c_plus : Pi n1: int. Pi n2: int. int;
+c_eq_int : Pi n3: int. Pi n4: int. bool;
+c_and : Pi b1: bool. Pi b2: bool. bool;
+c_imp : Pi b3: bool. Pi b4: bool. bool;
+c_not : Pi b5: bool. bool;
+c_forall : Pi x1: (Pi n5: int. bool). bool;
+c_x : var;
+
+prog : *;
+c_skip : proq;
+c_seq : Pi p1: prog. Pi p2: prog. prog;
+c_set : Pi v2: var. Pi n6: int. prog;
+c_if : Pi b6: bool. Pi p3: prog. Pi p4: prog. Lock qf (b6, bool) [prog];
+c_while : Pi b7: bool. Pi p5: prog. Lock qf (b7, bool) [prog];
+
+args : *;
+c_assoc : Pi v3: var. Pi x2: (Pi n7: int. bool). args;
+hoare : Pi b8: bool. Pi p6: prog. Pi b9: bool. *;
+c_hoare_skip : Pi b10: bool. ((hoare b10) c_skip) b10;
+c_hoare_set : Pi n7: int. Pi v4: var. Pi x3: (Pi n8: int. bool). Lock p_set ((c_ass v4) x3, args) [((hoare (x3 n7)) ((c_set v4) n7)) (x3 (c_bang v4))];
+c_hoare_seq : Pi b11: bool. Pi b12: bool. Pi b13: bool. Pi p7: prog. Pi p8: prog. Pi x2: ((hoare b11) p7) b12. Pi x3: ((hoare b12) p8) b13. ((hoare b11) ((c_seq p7) p8)) b13;
+c_hoare_if : Pi b14: bool. Pi b11: bool. Pi b12: bool. Pi p9: prog. Pi p10: prog. Pi x4: ((hoare ((c_and b16) b14)) p9) b11.
+	Pi x5 : ((hoare ((c_and (c_not b15)) b14)) p10) b15. Lock true (b16, bool) [((hoare b14) Unlock qf (b16, bool) [((c_hoare_if b16) p9) p10]) b14];
+c_hoare_while : Pi b13: bool. Pi b14: bool. Pi p11: prog. Pi x6: ((hoare ((c_and b13) b14)) p11) b13. Lock qf (b14, bool) [((hoare b13) (Unlock qf (b14, bool) [(c_while b14) p11])) ((c_and (c_not b14)) b13)];
+true : Pi b15: bool. *;
+c_hoare_cons : Pi b16: bool. Pi b17: bool. Pi b18: bool. Pi b19: bool. Pi p12: prog. Pi x7: true ((imp b17) b16). Pi x8: ((hoare b16) p12) b18. Pi x9: true ((imp b18) b19). ((hoare b17) p12) b18;
+
+
+END_SIGNATURE
+
+CONTEXT
+
+b20: bool;
+x : var;
+e : Pi n: int.bool;
+b21 : Lock true ((c_assoc c_x) (Lam n: int. (c_eq_int n) n), args) [bool];
+
+END_CONTEXT
+
+OBJECT
+
+Unlock true ((c_assoc c_x) (Lam n: int. (c_eq_int n) n), args) [Lock true ((c_assoc c_x) (Lam n: int. (c_eq_int n) n), args) [x]]
+
+FAMILY
+
+var

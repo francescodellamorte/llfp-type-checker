@@ -1,0 +1,23 @@
+SIGNATURE
+
+int: *;
+eq : Pi x5: int. Pi x6: int. *;
+c_lol : Pi x12: int. (eq x12) x12;
+
+END_SIGNATURE
+
+
+CONTEXT
+
+z: int;
+
+END_CONTEXT
+
+
+OBJECT
+
+c_lol z
+
+FAMILY
+
+(eq z) z

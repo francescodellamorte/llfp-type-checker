@@ -1,0 +1,19 @@
+SIGNATURE
+
+int: *;
+
+END_SIGNATURE
+
+CONTEXT
+
+x: int;
+
+END_CONTEXT
+
+OBJECT
+
+Unlock true (x, int) [Lam y: int. y]
+
+FAMILY
+
+int

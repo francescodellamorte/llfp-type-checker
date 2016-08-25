@@ -1,0 +1,54 @@
+SIGNATURE
+
+o : *;
+i : *;
+T : Pi a0: o. *;
+V : Pi a1: o. *;
+
+c_and : Pi a15: o. Pi a16: o. o;
+c_or : Pi a17: o. Pi a18: o. o;
+c_not : Pi a19: o. o;
+c_and_intro : Pi a20: o. Pi a21: o. Pi x6: T a20. Pi x7: T a21. T ((c_and a20) a21);
+c_and_elim1 : Pi a22: o. Pi a23: o. Pi x8: T ((c_and a22) a23). T a22;
+c_and_elim2 : Pi a24: o. Pi a25: o. Pi x9: T ((c_and a24) a25). T a25;
+c_or_intro1 : Pi a26: o. Pi a27: o. Pi x10: T a26. T ((c_or a26) a27);
+c_or_intro1 : Pi a28: o. Pi a29: o. Pi x11: T a29. T ((c_or a28) a29);
+c_or_elim : Pi a30: o. Pi a31: o. Pi a32: o. Pi x12: T ((c_or a30) a31).  Pi f4: (Pi x12: V a30. T a32). Pi f5: (Pi x13: V a31. T a32). T a32;
+
+c_d : Pi a2: o. Pi x0: V a2. T a2;
+c_r : Pi a3: o. Pi a4: o. o;
+c_lam : Pi f0: (Pi a5: i. o). i;
+c_eps : Pi a6: i. Pi a7: i. o;
+c_r_intro : Pi a8: o. Pi a9: o. Pi f1: (Pi x1: V a8. T a9). T ((c_r a8) a9);
+c_r_elim : Pi a10: o. Pi a11 : o. Pi x2: T a10. Pi x3: T ((c_r a10) a11). Lock fitch (<a10, a11>, (T a10) X (T ((c_r a10) a11))) [T a11];
+c_lam_intro : Pi f2: (Pi a12: i. o). Pi a13: i. Pi x4: T (f2 a12). T ((c_eps a12) (c_lam f2));
+c_lam_elim : Pi f3: (Pi a13: i. o). Pi a14: i. Pi x5: T ((c_eps a14) (c_lam f3)). T (f3 a14);
+
+c_forall : Pi f6: (Pi a33: i. o). o;
+c_exists : Pi f7: (Pi a34: i. o). o;
+c_forall_intro : Pi f8: (Pi a35: i. o). Pi f9: (Pi a36: i. T (f8 a36)). T (c_forall f8);
+c_forall_elim : Pi f10: (Pi a37: i. o). Pi x14: T (c_forall f10). Pi a38: i. T (f10 a38);
+c_exists_intro : Pi f11: (Pi a39: i. o). Pi a40: i. Pi x15: T (f11 a40). T (c_exists f11);
+c_exists_elim : Pi f12: (Pi a41: i. o). Pi x16: T (c_exists f12). Pi a41: o. Pi f14: (Pi a42: i. Pi x18: V (f12 a42). T a41). T a41;
+
+c_false : o;
+c_bot : Pi a43: o. Pi f13: (Pi x17: V (c_not a43). T c_false). T a43;
+
+END_SIGNATURE
+
+CONTEXT
+
+a : o;
+b : o;
+x : V a;
+y : V ((c_r a) b);
+
+END_CONTEXT
+
+OBJECT
+
+Unlock fitch (<(c_d a) x, (c_d ((c_r a) b)) y >, T a X T ((c_r a) b)) [Lock fitch (<(c_d a) x, (c_d ((c_r a) b)) y>, T a X T ((c_r a) b)) [x]]
+
+FAMILY
+
+V a

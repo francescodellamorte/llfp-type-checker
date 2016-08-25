@@ -1,0 +1,89 @@
+DIGEST f2c2437cdd2ff47acded43423eb645f5
+Fdefinitions
+R15:20 Coq.Strings.String <> <> lib
+R38:41 Coq.Lists.List <> <> lib
+ind 55:71 <> signature_element
+constr 85:100 <> Const_family_s_e
+constr 143:151 <> Const_s_e
+ind 209:223 <> context_element
+constr 237:243 <> Var_c_e
+ind 299:302 <> kind
+constr 316:321 <> Type_k
+constr 333:336 <> Pi_k
+ind 389:404 <> canonical_family
+constr 418:427 <> Atomic_c_f
+constr 468:473 <> Pi_c_f
+constr 547:554 <> Lock_c_f
+ind 651:663 <> atomic_family
+constr 677:692 <> Const_family_a_f
+constr 723:729 <> App_a_f
+ind 790:805 <> canonical_object
+constr 819:828 <> Atomic_c_o
+constr 869:875 <> Lam_c_o
+constr 949:956 <> Lock_c_o
+ind 1053:1065 <> atomic_object
+constr 1079:1087 <> Const_a_o
+constr 1118:1124 <> Var_a_o
+constr 1155:1161 <> App_a_o
+constr 1219:1228 <> Unlock_a_o
+R122:138 definitions <> signature_element ind
+R114:117 definitions <> kind ind
+R104:109 Coq.Strings.String <> string ind
+R185:201 definitions <> signature_element ind
+R165:180 definitions <> canonical_family ind
+R155:160 Coq.Strings.String <> string ind
+R277:291 definitions <> context_element ind
+R257:272 definitions <> canonical_family ind
+R247:252 Coq.Strings.String <> string ind
+R325:328 definitions <> kind ind
+R378:381 definitions <> kind ind
+R370:373 definitions <> kind ind
+R350:365 definitions <> canonical_family ind
+R340:345 Coq.Strings.String <> string ind
+R448:463 definitions <> canonical_family ind
+R431:443 definitions <> atomic_family ind
+R527:542 definitions <> canonical_family ind
+R507:522 definitions <> canonical_family ind
+R487:502 definitions <> canonical_family ind
+R477:482 Coq.Strings.String <> string ind
+R628:643 definitions <> canonical_family ind
+R608:623 definitions <> canonical_family ind
+R588:603 definitions <> canonical_family ind
+R568:583 definitions <> canonical_object ind
+R558:563 Coq.Strings.String <> string ind
+R706:718 definitions <> atomic_family ind
+R696:701 Coq.Strings.String <> string ind
+R770:782 definitions <> atomic_family ind
+R750:765 definitions <> canonical_object ind
+R733:745 definitions <> atomic_family ind
+R849:864 definitions <> canonical_object ind
+R832:844 definitions <> atomic_object ind
+R929:944 definitions <> canonical_object ind
+R909:924 definitions <> canonical_object ind
+R889:904 definitions <> canonical_family ind
+R879:884 Coq.Strings.String <> string ind
+R1030:1045 definitions <> canonical_object ind
+R1010:1025 definitions <> canonical_object ind
+R990:1005 definitions <> canonical_family ind
+R970:985 definitions <> canonical_object ind
+R960:965 Coq.Strings.String <> string ind
+R1101:1113 definitions <> atomic_object ind
+R1091:1096 Coq.Strings.String <> string ind
+R1138:1150 definitions <> atomic_object ind
+R1128:1133 Coq.Strings.String <> string ind
+R1202:1214 definitions <> atomic_object ind
+R1182:1197 definitions <> canonical_object ind
+R1165:1177 definitions <> atomic_object ind
+R1299:1311 definitions <> atomic_object ind
+R1282:1294 definitions <> atomic_object ind
+R1262:1277 definitions <> canonical_family ind
+R1242:1257 definitions <> canonical_object ind
+R1232:1237 Coq.Strings.String <> string ind
+def 1326:1334 <> signature
+R1339:1342 Coq.Init.Datatypes <> list ind
+R1344:1360 definitions <> signature_element ind
+def 1375:1381 <> context
+R1386:1389 Coq.Init.Datatypes <> list ind
+R1391:1405 definitions <> context_element ind
+R1435:1438 Coq.Init.Datatypes <> cons constr
+not 1418 <> ::x_'::'_x
